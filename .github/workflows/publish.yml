@@ -32,4 +32,6 @@ jobs:
         with:
           context: .
           push: true
-          tags: ghcr.io/${{ steps.repo_name.outputs.repo }}:${{ github.sha }}
+          tags: |
+            ghcr.io/${{ steps.repo_name.outputs.repo }}:latest
+            ghcr.io/${{ steps.repo_name.outputs.repo }}:${{ github.sha }}
