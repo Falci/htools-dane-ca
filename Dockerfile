@@ -16,7 +16,7 @@ FROM python:3.8-slim
 
 WORKDIR /app
 
-# Create a non-root user
+# Copy installed dependencies from builder stage
 RUN useradd --create-home appuser
 
 # Copy installed dependencies from builder stage
@@ -30,11 +30,15 @@ COPY . .
 RUN mkdir -p /etc/serles /etc/serles/data
 COPY gunicorn_config.py /etc/serles/gunicorn_config.py
 
-# Switch to the non-root user
-USER appuser
+# Copy entrypoint script and make it executable
+COPY entrypoint.sh /usr/local/bin/entrypoint.sh
+RUN chmod +x /usr/local/bin/entrypoint.sh
 
 # Expose the port the app runs on
 EXPOSE 8000
 
-# Run the application
-CMD ["gunicorn", "--config", "/etc/serles/gunicorn_config.py", "serles:create_app()"]
+# Set the entrypoint
+ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
+CMD []
+
+USER appuser
