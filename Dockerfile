@@ -27,11 +27,8 @@ RUN pip install --no-cache /wheels/*
 COPY . .
 
 # Create the configuration directory and copy configs
-RUN mkdir -p /etc/serles
+RUN mkdir -p /etc/serles /etc/serles/data
 COPY gunicorn_config.py /etc/serles/gunicorn_config.py
-
-# Set ownership of the app directory
-RUN chown -R appuser:appuser /app /etc/serles
 
 # Switch to the non-root user
 USER appuser
@@ -40,4 +37,4 @@ USER appuser
 EXPOSE 8000
 
 # Run the application
-CMD ["gunicorn", "--config", "/etc/serles/gunicorn_config.py", "serles:create_app()"]
+CMD ["bash", "-c", "chown -R appuser:appuser /etc/serles/data && exec su appuser -c \"gunicorn --config /etc/serles/gunicorn_config.py 'serles:create_app()'\""]
