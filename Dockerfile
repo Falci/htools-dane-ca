@@ -37,4 +37,4 @@ USER appuser
 EXPOSE 8000
 
 # Run the application
-CMD ["bash", "-c", "chown -R appuser:appuser /etc/serles/data && exec su appuser -c \"gunicorn --config /etc/serles/gunicorn_config.py 'serles:create_app()'\""]
+CMD ["gunicorn", "--config", "/etc/serles/gunicorn_config.py", "serles:create_app()"]
