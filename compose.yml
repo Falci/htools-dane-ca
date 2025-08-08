@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  web:
+    # To build from a local source, comment out the "image" line and uncomment the "build" line.
+    # build: .
+    image: ghcr.io/Falci/htools-dane-ca:latest
+    ports:
+      - "8000:8000"
+    environment:
+#      - SERVER_NAME=acme.hns.dev
+      - SERVER_NAME=beta.falci.me
+    volumes:
+      - ./config.ini:/etc/serles/config.ini
+      - ./db.sqlite:/etc/serles/db.sqlite
+    dns:
+      - 52.223.32.56

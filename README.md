@@ -36,6 +36,22 @@ Check out the original project this is forked from: [dvtirol/serles-acme](https:
 
 ## Run Locally
 
+### With Docker
+
+To run the application using Docker, first create a `config.ini` file from the example:
+
+```sh
+cp config.ini.example config.ini
+```
+
+Then, build and run the application using `docker-compose`:
+
+```sh
+docker-compose up --build
+```
+
+### Without Docker
+
 Clone the project:
 
 ```sh

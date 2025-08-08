@@ -1,6 +1,7 @@
 from datetime import datetime, timezone
 from flask import Flask, render_template, jsonify
 import re
+import os
 
 from .utils import background_job, base64d, query, get_ptr, ip_in_ranges, normalize
 from .configloader import get_config
@@ -21,12 +22,13 @@ def create_app():
     app.config["PROPAGATE_EXCEPTIONS"] = True  # makes @app.errorhandler handle events
     app.config["SQLALCHEMY_DATABASE_URI"] = config["database"]
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
-    app.config["SERVER_NAME"] = config["server_name"]
+    app.config["SERVER_NAME"] = os.environ.get("SERVER_NAME", "acme.hns.dev")
 
     init_config()  # views.init_config()
     api.init_app(app)
     db.init_app(app)
-    db.create_all(app=app)  # Note: model classes must be defined at this point
+    with app.app_context():
+        db.create_all()  # Note: model classes must be defined at this point
 
     @app.route('/')
     def HomePage():

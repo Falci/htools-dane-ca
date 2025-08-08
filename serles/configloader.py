@@ -66,10 +66,7 @@ def load_config_and_backend(filename):
             "backend does not define a sign method (wrong class loaded?)"
         ) from None
 
-    try:
-        config["server_name"] = cparser["serles"]["server_name"]
-    except KeyError:
-        raise ConfigError("no [serles]server_name= configured") from None
+    
 
     try:
         config["database"] = cparser["serles"]["database"]
