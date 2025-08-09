@@ -1,6 +1,6 @@
 # Handshake Tools DANE CA
 
-**Live:** https://acme.htools.work/
+**Live:** https://acme.hns.dev/
 
 This is a fork of [dvtirol/serles-acme](https://github.com/dvtirol/serles-acme), modified to issue certificates for use with DANE (on [Handshake](https://handshake.org) domains).
 
@@ -27,7 +27,7 @@ Options can be combined. Example:
 Use an ACME client like you would for any regular website, along with a new arg `--server`:
 
 ```sh
-sudo certbot --nginx -d your_tld.or_sld --server https://acme.htools.work/directory --reuse-key
+sudo certbot --nginx -d your_tld.or_sld --server https://acme.hns.dev/directory --reuse-key
 ```
 
 ## Documentation
