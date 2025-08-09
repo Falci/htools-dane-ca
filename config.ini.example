@@ -11,7 +11,7 @@ server_name = localhost
 # If you don't care about account keys, and given that you are running only 1
 # process and 1 thread, you can use an in-memory database by setting it to
 # "sqlite:///:memory:".
-database = sqlite:////etc/serles/db.sqlite
+database = sqlite:////etc/serles/db/db.sqlite
 # Mariadb is also supported, but you will need to install pymysql from pypi.
 #database = mysql+pymysql://user:passwd@localhost/db_acmeproxy
 

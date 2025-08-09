@@ -27,18 +27,12 @@ RUN pip install --no-cache /wheels/*
 COPY . .
 
 # Create the configuration directory and copy configs
-RUN mkdir -p /etc/serles /etc/serles/data
+RUN mkdir -p /etc/serles
 COPY gunicorn_config.py /etc/serles/gunicorn_config.py
-
-# Copy entrypoint script and make it executable
-COPY entrypoint.sh /usr/local/bin/entrypoint.sh
-RUN chmod +x /usr/local/bin/entrypoint.sh
 
 # Expose the port the app runs on
 EXPOSE 8000
 
-# Set the entrypoint
-ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
-CMD []
+# Run the application
+CMD ["gunicorn", "--config", "/etc/serles/gunicorn_config.py", "serles:create_app()"]
 
-USER appuser

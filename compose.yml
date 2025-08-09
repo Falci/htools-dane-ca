@@ -11,9 +11,6 @@ services:
       - SERVER_NAME=acme.hns.dev
     volumes:
       - ./config.ini:/etc/serles/config.ini
-      - serles_db_data:/etc/serles/data
+      - ./db:/etc/serles/db
     dns:
       - 52.223.32.56
-
-volumes:
-  serles_db_data:
