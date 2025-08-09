@@ -55,7 +55,7 @@ docker-compose up --build
 Clone the project:
 
 ```sh
-git clone https://github.com/htools-org/htools-dane-ca
+git clone https://github.com/falci/htools-dane-ca
 cd htools-dane-ca
 ```
 
@@ -91,7 +91,7 @@ Any client can connect to it now:
 
 For any support/help, feel free to join Handshake's [Telegram](https://t.me/hns_tech) or [Discord](https://discord.gg/AtqtxGckqX) groups and we'll do our best to find out what's wrong.
 
-If there's any problem with the code or have suggestions, [create a new issue](https://github.com/htools-org/htools-dane-ca/issues/new).
+If there's any problem with the code or have suggestions, [create a new issue](https://github.com/falci/htools-dane-ca/issues/new).
 
 ## License
 

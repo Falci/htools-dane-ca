@@ -3,10 +3,10 @@ version: '3.8'
 services:
   web:
     # To build from a local source, comment out the "image" line and uncomment the "build" line.
-    build: .
-    # image: htools
+    # build: .
+    image: ghcr.io/falci/htools-dane-ca:latest
     ports:
-      - "8000:8000"
+      - '8000:8000'
     environment:
       - SERVER_NAME=acme.hns.dev
     volumes:
